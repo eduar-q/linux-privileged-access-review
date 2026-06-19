@@ -16,7 +16,7 @@ Las organizaciones otorgan accesos constantemente, pero rara vez los auditan. Co
 ## Installation
 
 ```
-git clone [https://github.com/TU_USUARIO_AQUI/access-relevance-analyzer](https://github.com/TU_USUARIO_AQUI/access-relevance-analyzer)
+git clone [https://github.com/eduar696/access-relevance-analyzer](https://github.com/TU_USUARIO_AQUI/access-relevance-analyzer)
 cd access-relevance-analyzer
 pip install -r requirements.txt
 ```
