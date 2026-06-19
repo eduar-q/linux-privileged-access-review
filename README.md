@@ -32,7 +32,7 @@ python3 main.py
 ## Example Output
 
 Este es un ejemplo de lo que verás al ejecutar el script en un sistema con usuarios privilegiados:
-Plaintext
+
 ```
 --- ACCESS RELEVANCE ANALYZER ---
 
