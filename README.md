@@ -41,7 +41,7 @@ User: eduar
 --------------------
 ```
 
-¿Cómo funciona?
+## ¿Cómo funciona?
 
 El proyecto utiliza una arquitectura modular diseñada para facilitar la auditoría y el mantenimiento:
 
