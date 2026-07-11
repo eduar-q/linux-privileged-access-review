@@ -34,7 +34,7 @@ Aunque existen soluciones completas de IAM y PAM, muchas organizaciones pequeña
 
 ### Solución
 
-El proyecto recopila información de usuarios, grupos privilegiados y actividad registrada mediante `lastlog` para calcular un puntaje de riesgo basado en reglas simples.
+El proyecto recopila información de usuarios, grupos privilegiados (primarios y secundarios) y actividad registrada mediante `lastlog` para calcular un puntaje de riesgo basado en reglas simples.
 
 El resultado es un resumen que ayuda a priorizar qué cuentas deberían revisarse primero durante una auditoría de accesos.
 
@@ -44,10 +44,11 @@ El resultado es un resumen que ayuda a priorizar qué cuentas deberían revisars
 
 Actualmente el proyecto permite:
 
-- ✅ Identificar usuarios pertenecientes a grupos privilegiados (`sudo`, `docker`, `adm`, entre otros).
+- ✅ Identificar usuarios pertenecientes a grupos privilegiados (`sudo`, `docker`, `adm`, entre otros), incluyendo grupos primarios (GID) y secundarios.
 - ✅ Analizar la actividad reciente utilizando `lastlog`.
 - ✅ Calcular un puntaje de riesgo basado en privilegios e inactividad.
-- ✅ Mostrar un reporte resumido en consola para facilitar la revisión.
+- ✅ Mostrar un reporte formateado en consola como tabla para facilitar la revisión.
+- ✅ Exportar resultados a JSON para auditorías o ingestión en otros sistemas.
 
 ---
 
@@ -68,92 +69,12 @@ El objetivo del análisis es ayudar a priorizar revisiones de acceso; no determi
 ```text
 --- LINUX PRIVILEGED ACCESS REVIEW ---
 
-User: eduar
++-----------+---------+---------+-----------------------------------+
+| Usuario   | Nivel   |   Score | Razones                           |
++===========+=========+=========+===================================+
+| eduar     | MEDIUM  |      40 | Privileged groups: adm, sudo, lxd |
++-----------+---------+---------+-----------------------------------+
 
-Level: MEDIUM (Score: 40)
+Total usuarios revisados: 1
 
-Reasons:
-- Privileged groups: adm, sudo, lxd
-
---------------------
-```
-
----
-
-# 🛠️ Tecnologías utilizadas
-
-- Python 3
-- Linux
-- Bash
-- `pwd`
-- `grp`
-- `subprocess`
-- `datetime`
-
----
-
-# 📁 Estructura del Proyecto
-
-```text
-.
-├── analyzer/
-│   ├── users.py
-│   ├── groups.py
-│   ├── risk.py
-│   └── report.py
-│
-├── main.py
-├── requirements.txt
-├── README.md
-└── LICENSE
-```
-
----
-
-# ⚙️ Arquitectura
-
-El proyecto sigue un flujo modular donde cada componente tiene una responsabilidad específica.
-
-```text
-Usuarios Linux
-        │
-        ▼
-Obtención de usuarios
-        │
-        ▼
-Identificación de grupos privilegiados
-        │
-        ▼
-Consulta de actividad (lastlog)
-        │
-        ▼
-Motor de evaluación de riesgo
-        │
-        ▼
-Reporte en consola
-```
-
----
-
-# ⚠️ Limitaciones
-
-Este proyecto está orientado a ejercicios de auditoría y aprendizaje.
-
-- No realiza monitoreo continuo.
-- No modifica permisos del sistema.
-- El puntaje de riesgo se basa en reglas definidas dentro del proyecto.
-- Los resultados deben interpretarse como apoyo para una revisión manual.
-
----
-
-# 🎯 Objetivo del Proyecto
-
-Este repositorio fue desarrollado como proyecto de aprendizaje para practicar:
-
-- Automatización con Python.
-- Administración de sistemas Linux.
-- Auditoría básica de accesos privilegiados.
-- Análisis mediante reglas de riesgo.
-- Organización y documentación de proyectos técnicos en GitHub.
-
-El proyecto no pretende sustituir soluciones completas de gestión de identidades (IAM/PAM), sino demostrar una implementación propia para apoyar revisiones periódicas de cuentas privilegiadas.
+[+] Reporte exportado a report.json
