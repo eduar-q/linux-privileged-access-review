@@ -78,9 +78,8 @@ El objetivo del análisis es ayudar a priorizar revisiones de acceso; no determi
 Total usuarios revisados: 1
 
 [+] Reporte exportado a report.json
+
 ```
-
-
 
 
 
@@ -94,7 +93,7 @@ Total usuarios revisados: 1
     subprocess
     datetime
     tabulate
-```
+    ```
 
 # 📁 Estructura del Proyecto
 
@@ -110,7 +109,7 @@ Total usuarios revisados: 1
 ├── requirements.txt
 ├── README.md
 └── LICENSE
-```
+
 
 ---
 
