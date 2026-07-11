@@ -95,9 +95,10 @@ Total usuarios revisados: 1
     datetime
     tabulate
 
+
 # 📁 Estructura del Proyecto
 
-
+.
 ├── analyzer/
 │   ├── users.py
 │   ├── groups.py
