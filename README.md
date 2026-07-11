@@ -78,3 +78,76 @@ El objetivo del análisis es ayudar a priorizar revisiones de acceso; no determi
 Total usuarios revisados: 1
 
 [+] Reporte exportado a report.json
+```
+
+
+
+
+
+# 🛠️ Tecnologías utilizadas
+
+    Python 3
+    Linux
+    Bash
+    pwd
+    grp
+    subprocess
+    datetime
+    tabulate
+
+# 📁 Estructura del Proyecto
+
+
+├── analyzer/
+│   ├── users.py
+│   ├── groups.py
+│   ├── risk.py
+│   └── report.py
+│
+├── main.py
+├── requirements.txt
+├── README.md
+└── LICENSE
+
+
+# ⚙️ Arquitectura
+El proyecto sigue un flujo modular donde cada componente tiene una responsabilidad específica.
+
+Usuarios Linux
+        │
+        ▼
+Obtención de usuarios
+        │
+        ▼
+Identificación de grupos privilegiados (GID primario + secundarios)
+        │
+        ▼
+Consulta de actividad (lastlog)
+        │
+        ▼
+Motor de evaluación de riesgo
+        │
+        ▼
+Reporte en consola (tabla) + Exportación JSON
+
+
+# ⚠️ Limitaciones
+Este proyecto está orientado a ejercicios de auditoría y aprendizaje.
+
+    No realiza monitoreo continuo.
+    No modifica permisos del sistema.
+    El puntaje de riesgo se basa en reglas definidas dentro del proyecto.
+    Los resultados deben interpretarse como apoyo para una revisión manual.
+
+
+
+# 🎯 Objetivo del Proyecto
+Este repositorio fue desarrollado como proyecto de aprendizaje para practicar:
+
+    Automatización con Python.
+    Administración de sistemas Linux.
+    Auditoría básica de accesos privilegiados.
+    Análisis mediante reglas de riesgo.
+    Organización y documentación de proyectos técnicos en GitHub.
+
+El proyecto no pretende sustituir soluciones completas de gestión de identidades (IAM/PAM), sino demostrar una implementación propia para apoyar revisiones periódicas de cuentas privilegiadas.
