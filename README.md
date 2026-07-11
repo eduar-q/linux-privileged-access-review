@@ -96,7 +96,8 @@ Total usuarios revisados: 1
     tabulate
 
 
-# 📁 Estructura del Proyecto
+📁 Estructura del Proyecto
+Text
 
 .
 ├── analyzer/
