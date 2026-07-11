@@ -96,9 +96,9 @@ Total usuarios revisados: 1
     tabulate
 
 
-📁 Estructura del Proyecto
-Text
+# 📁 Estructura del Proyecto
 
+```text
 .
 ├── analyzer/
 │   ├── users.py
@@ -110,7 +110,9 @@ Text
 ├── requirements.txt
 ├── README.md
 └── LICENSE
+```
 
+---
 
 # ⚙️ Arquitectura
 El proyecto sigue un flujo modular donde cada componente tiene una responsabilidad específica.
