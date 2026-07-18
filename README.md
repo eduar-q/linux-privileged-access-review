@@ -88,7 +88,7 @@ El resultado no determina automáticamente si una cuenta es segura o insegura. S
 +-----------+---------+---------+-----------------------------------+
 | Usuario   | Nivel   | Score   | Razones                           |
 +===========+=========+=========+===================================+
-| eduar     | MEDIUM  | 40      | Privileged groups: adm,sudo,lxd  |
+| sysadmin     | MEDIUM  | 40      | Privileged groups: adm,sudo,lxd  |
 +-----------+---------+---------+-----------------------------------+
 
 Total usuarios revisados: 1
