@@ -110,7 +110,7 @@ Bash
 
 ```
 
-Librerías utilizadas:
+#📚Librerías utilizadas:
 
 ```
 pwd
@@ -173,7 +173,7 @@ Reporte en consola + Exportación JSON
 ```
 ---
 
-# ⚠️ Alcance
+# 🎯 Alcance
 
 Analiza usuarios y grupos locales del sistema.
 
