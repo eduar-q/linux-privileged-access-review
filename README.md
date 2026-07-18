@@ -1,5 +1,3 @@
-
-
 # Linux Privileged Access Review 🔐
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=white)
@@ -98,19 +96,23 @@ Total usuarios revisados: 1
 [+] Reporte exportado a report.json
 
 
+```
 ---
 
 🛠️ Tecnologías utilizadas
 
+```
 Python 3
 
 Linux
 
 Bash
 
+```
 
 Librerías utilizadas:
 
+```
 pwd
 
 grp
@@ -122,11 +124,13 @@ datetime
 tabulate
 
 
+```
 
 ---
 
 📁 Estructura del Proyecto
 
+```
 linux-privileged-access-review/
 
 ├── analyzer/
@@ -141,10 +145,12 @@ linux-privileged-access-review/
 └── LICENSE
 
 
+```
 ---
 
 ⚙️ Arquitectura
 
+```
 Usuarios Linux
         │
         ▼
@@ -164,6 +170,7 @@ Motor de evaluación de riesgo
 Reporte en consola + Exportación JSON
 
 
+```
 ---
 
 ⚠️ Alcance
@@ -184,17 +191,21 @@ Los resultados requieren validación manual.
 
 🚀 Instalación
 
+```
 git clone https://github.com/eduar-q/linux-privileged-access-review.git
 cd linux-privileged-access-review
 pip install -r requirements.txt
 
+```
 
 ---
 
 🎮 Uso
 
+```
 python3 main.py
 
+```
 
 ---
 
