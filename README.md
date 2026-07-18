@@ -1,3 +1,64 @@
+La versión que te pasaron tiene buenas ideas, pero haría algunos ajustes antes de ponerla en GitHub. La dirección es correcta, pero hay frases que pueden jugar en contra ante un perfil técnico.
+
+Mi análisis:
+
+Lo que mejoraría de esa versión
+
+1. La historia inicial es buena, pero está demasiado informal.
+
+Esta frase:
+
+> "Olvidar que existe durante seis meses es más fácil todavía."
+
+
+
+Tiene gancho, pero suena más a publicación de blog que a README técnico. En GitHub conviene mantener algo humano, pero con más precisión.
+
+También:
+
+> "Me encontré con esto administrando un servidor personal"
+
+
+
+Si eso no ocurrió exactamente, mejor no ponerlo. Un reclutador técnico puede preguntar detalles. Es mejor decir que nace de un escenario común de administración Linux.
+
+
+---
+
+2. Esta frase es demasiado fuerte:
+
+> "te dice en diez segundos qué cuentas deberías revisar hoy."
+
+
+
+Tu herramienta no decide qué cuentas revisar. Solo genera una priorización basada en reglas.
+
+Mejor:
+
+> "ayuda a identificar cuentas que podrían requerir una revisión."
+
+
+
+Eso es más correcto técnicamente.
+
+
+---
+
+3. Esta frase:
+
+> "No es un IAM enterprise. Es lo que usas cuando no tienes un IAM enterprise..."
+
+
+
+Tiene personalidad, pero para un README profesional la quitaría. Parece una comparación comercial.
+
+
+---
+
+La idea buena es mezclar lo mejor de ambas versiones: la narrativa humana de esa propuesta + la precisión técnica de tu README original.
+
+Yo dejaría el README así:
+
 # Linux Privileged Access Review 🔐
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=white)
@@ -10,26 +71,23 @@
 
 ## 🚀 Sobre el proyecto
 
-En la administración de sistemas Linux, crear usuarios y asignar permisos suele ser una tarea habitual.
+En Linux, asignar privilegios administrativos es una tarea común.
 
-El verdadero desafío aparece cuando es necesario revisar si esos privilegios siguen siendo necesarios con el tiempo.
+El desafío aparece con el tiempo: saber si esos accesos siguen siendo necesarios.
 
-Es común encontrar situaciones como:
+Durante la administración de sistemas es posible encontrar situaciones como:
 
 - Usuarios que continúan perteneciendo a grupos privilegiados.
 - Cuentas con permisos administrativos que ya no tienen una necesidad operativa clara.
 - Accesos elevados que nunca fueron revisados después de ser asignados.
 
-**Linux Privileged Access Review** es un proyecto personal desarrollado en Python que analiza cuentas privilegiadas en sistemas Linux combinando información de grupos críticos y actividad registrada mediante `lastlog`.
+Cuando aumenta la cantidad de usuarios o sistemas administrados, realizar estas comprobaciones manualmente puede convertirse en una tarea repetitiva.
 
-El objetivo del proyecto es generar información que facilite una revisión manual de accesos, practicando conceptos de:
+Por esa razón desarrollé **Linux Privileged Access Review**, una herramienta personal en Python que analiza cuentas privilegiadas combinando información de grupos críticos (`sudo`, `docker`, `adm`, entre otros) con actividad registrada mediante `lastlog`.
 
-- Administración de usuarios y grupos en Linux.
-- Automatización con Python.
-- Auditoría básica de privilegios.
-- Análisis de riesgo basado en reglas.
+El proyecto genera un puntaje de riesgo basado en heurísticas definidas, permitiendo priorizar cuentas que podrían requerir una revisión manual.
 
-Este proyecto no busca reemplazar soluciones empresariales de IAM o PAM, sino servir como laboratorio práctico para comprender cómo automatizar revisiones de acceso en entornos Linux.
+No busca reemplazar soluciones empresariales IAM/PAM, sino demostrar cómo una tarea de administración Linux puede automatizarse utilizando información disponible directamente desde el sistema.
 
 ---
 
@@ -41,33 +99,31 @@ Durante una revisión de accesos pueden surgir preguntas como:
 
 - ¿Qué usuarios mantienen privilegios elevados?
 - ¿Qué cuentas pertenecen a grupos administrativos?
-- ¿Existen usuarios con permisos que deberían ser revisados?
-- ¿Qué cuentas tienen poca o ninguna actividad reciente?
+- ¿Qué accesos deberían revisarse?
+- ¿Qué usuarios presentan poca o ninguna actividad reciente?
 
-Realizar estas comprobaciones manualmente puede resultar repetitivo cuando se administran varios sistemas Linux.
+Realizar este análisis manualmente puede ser lento y propenso a pasar información por alto.
 
 ## Solución
 
 El proyecto recopila información del sistema para identificar cuentas privilegiadas mediante:
 
-- Membresía en grupos críticos como `sudo`, `docker`, `adm`, entre otros.
-- Grupos primarios y secundarios asociados al usuario.
+- Grupos críticos como `sudo`, `docker` y `adm`.
+- Membresías primarias y secundarias.
 - Última actividad registrada mediante `lastlog`.
 
-Con esta información genera un puntaje de riesgo basado en reglas simples, permitiendo priorizar qué cuentas podrían requerir una revisión.
+Con estos datos aplica reglas de evaluación para generar un puntaje que ayuda a ordenar las revisiones de acceso.
 
 ---
 
 # ✨ Características
 
-Actualmente el proyecto permite:
-
-- ✅ Identificar usuarios pertenecientes a grupos privilegiados (`sudo`, `docker`, `adm`, entre otros).
-- ✅ Analizar grupos primarios (GID) y secundarios asociados a cada usuario.
-- ✅ Consultar actividad reciente utilizando `lastlog`.
-- ✅ Generar un puntaje de riesgo basado en privilegios e inactividad.
-- ✅ Mostrar resultados en consola mediante una tabla.
-- ✅ Exportar reportes en formato JSON.
+- Identificación de usuarios pertenecientes a grupos privilegiados.
+- Análisis de grupos primarios y secundarios.
+- Consulta de última actividad mediante `lastlog`.
+- Evaluación de riesgo basada en privilegios e inactividad.
+- Reporte visual en consola.
+- Exportación de resultados en formato JSON.
 
 ---
 
@@ -75,13 +131,13 @@ Actualmente el proyecto permite:
 
 El puntaje generado funciona como una referencia para priorizar revisiones.
 
-La evaluación considera factores como:
+Los factores considerados incluyen:
 
-- Pertenencia a uno o varios grupos privilegiados.
+- Pertenencia a grupos privilegiados.
 - Tiempo desde la última actividad registrada.
 - Reglas definidas dentro del proyecto.
 
-El resultado no determina automáticamente si una cuenta representa un riesgo; sirve como apoyo para una revisión manual más eficiente.
+El resultado no determina automáticamente si una cuenta es segura o insegura. Su función es proporcionar información adicional para una revisión manual.
 
 ---
 
@@ -93,35 +149,43 @@ El resultado no determina automáticamente si una cuenta representa un riesgo; s
 +-----------+---------+---------+-----------------------------------+
 | Usuario   | Nivel   | Score   | Razones                           |
 +===========+=========+=========+===================================+
-| sysadmin     | MEDIUM  | 40      | Privileged groups: adm,sudo,lxd  |
+| eduar     | MEDIUM  | 40      | Privileged groups: adm,sudo,lxd  |
 +-----------+---------+---------+-----------------------------------+
 
 Total usuarios revisados: 1
 
 [+] Reporte exportado a report.json
-```
+
 
 ---
 
-# 🛠️ Tecnologías utilizadas
+🛠️ Tecnologías utilizadas
 
-- Python 3
-- Linux
-- Bash
+Python 3
+
+Linux
+
+Bash
+
 
 Librerías utilizadas:
 
-- pwd
-- grp
-- subprocess
-- datetime
-- tabulate
+pwd
+
+grp
+
+subprocess
+
+datetime
+
+tabulate
+
+
 
 ---
 
-# 📁 Estructura del Proyecto
+📁 Estructura del Proyecto
 
-```
 linux-privileged-access-review/
 
 ├── analyzer/
@@ -134,15 +198,12 @@ linux-privileged-access-review/
 ├── requirements.txt
 ├── README.md
 └── LICENSE
-```
+
 
 ---
 
-# ⚙️ Arquitectura
+⚙️ Arquitectura
 
-El proyecto utiliza una estructura modular donde cada componente tiene una responsabilidad específica.
-
-```
 Usuarios Linux
         │
         ▼
@@ -160,32 +221,42 @@ Motor de evaluación de riesgo
         │
         ▼
 Reporte en consola + Exportación JSON
-```
+
 
 ---
 
-# ⚠️ Limitaciones
+⚠️ Alcance
 
-Este proyecto está orientado a aprendizaje y práctica de administración Linux.
+Analiza usuarios y grupos locales del sistema.
 
-Actualmente:
+No integra actualmente con LDAP, Active Directory u otros proveedores externos de identidad.
 
-- No realiza monitoreo continuo.
-- No modifica permisos del sistema.
-- No reemplaza soluciones IAM/PAM empresariales.
-- El puntaje depende de reglas definidas dentro del proyecto.
-- Los resultados requieren validación manual antes de tomar decisiones.
+No modifica permisos ni realiza acciones automáticas sobre cuentas.
+
+Está diseñado para revisiones puntuales, no monitoreo continuo.
+
+Los resultados requieren validación manual.
+
+
 
 ---
 
-# 🎯 Objetivo del Proyecto
+🚀 Instalación
 
-Este repositorio fue desarrollado como proyecto práctico para reforzar conocimientos en:
+git clone https://github.com/eduar-q/linux-privileged-access-review.git
+cd linux-privileged-access-review
+pip install -r requirements.txt
 
-- Automatización de tareas administrativas con Python.
-- Administración de usuarios y grupos Linux.
-- Auditoría básica de accesos privilegiados.
-- Análisis mediante reglas de riesgo.
-- Organización y documentación técnica en GitHub.
 
-La finalidad del proyecto es demostrar cómo una tarea repetitiva de administración Linux puede automatizarse para apoyar revisiones periódicas de privilegios.
+---
+
+🎮 Uso
+
+python3 main.py
+
+
+---
+
+📝 Licencia
+
+MIT License — ver LICENSE para más detalles.
