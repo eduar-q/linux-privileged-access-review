@@ -99,7 +99,7 @@ Total usuarios revisados: 1
 ```
 ---
 
-🛠️ Tecnologías utilizadas
+# 🛠️ Tecnologías utilizadas
 
 ```
 Python 3
@@ -128,7 +128,7 @@ tabulate
 
 ---
 
-📁 Estructura del Proyecto
+# 📁 Estructura del Proyecto
 
 ```
 linux-privileged-access-review/
@@ -148,7 +148,7 @@ linux-privileged-access-review/
 ```
 ---
 
-⚙️ Arquitectura
+# ⚙️ Arquitectura
 
 ```
 Usuarios Linux
@@ -173,7 +173,7 @@ Reporte en consola + Exportación JSON
 ```
 ---
 
-⚠️ Alcance
+# ⚠️ Alcance
 
 Analiza usuarios y grupos locales del sistema.
 
@@ -189,7 +189,7 @@ Los resultados requieren validación manual.
 
 ---
 
-🚀 Instalación
+# 🚀 Instalación
 
 ```
 git clone https://github.com/eduar-q/linux-privileged-access-review.git
@@ -200,7 +200,7 @@ pip install -r requirements.txt
 
 ---
 
-🎮 Uso
+# 🎮 Uso
 
 ```
 python3 main.py
@@ -209,6 +209,3 @@ python3 main.py
 
 ---
 
-📝 Licencia
-
-MIT License — ver LICENSE para más detalles.
