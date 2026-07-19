@@ -169,5 +169,6 @@ cd linux-privileged-access-review
 pip install -r requirements.txt
 ```
 
-📝 Licencia
-MIT License — ver LICENSE para detalles.
+## 📝 Licencia
+
+MIT License — ver [LICENSE](LICENSE) para detalles.
