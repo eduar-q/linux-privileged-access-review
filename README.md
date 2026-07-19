@@ -88,7 +88,7 @@ El resultado no determina automáticamente si una cuenta es segura o insegura. S
 +-----------+---------+---------+-----------------------------------+
 | Usuario   | Nivel   | Score   | Razones                           |
 +===========+=========+=========+===================================+
-| lab-admin     | MEDIUM  | 40      | Privileged groups: adm,sudo,lxd  |
+| lab-admin     | MEDIUM  | 40      | Privileged groups: adm,sudo,  |
 +-----------+---------+---------+-----------------------------------+
 
 Total usuarios revisados: 1
